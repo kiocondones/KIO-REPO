@@ -1,0 +1,61 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  * {
+    @apply m-0 p-0 box-border;
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  body {
+    @apply font-sans min-h-screen overflow-x-hidden bg-gradient-to-br from-indigo-500 to-purple-600;
+  }
+
+  select {
+    color: #1f2937;
+  }
+
+  select option {
+    color: #1f2937;
+    background-color: #ffffff;
+    padding: 8px 12px;
+  }
+
+  select:invalid {
+    color: #6b7280;
+  }
+}
+
+/* Custom Rounded Checkbox */
+.round-checkbox {
+  width: 20px;
+  height: 20px;
+  appearance: none; /* Removes default styling */
+  -webkit-appearance: none;
+  border: 2px solid #d1d5db; /* gray-300 */
+  border-radius: 50%; /* Makes it round */
+  outline: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  transition: background 0.2s;
+}
+
+.round-checkbox:checked {
+  background-color: #1d4ed8; /* blue-700 */
+  border-color: #1d4ed8;
+}
+
+/* Creating the white checkmark using a pseudo-element */
+.round-checkbox:checked::after {
+  content: '';
+  width: 5px;
+  height: 10px;
+  border: solid white;
+  border-width: 0 2px 2px 0;
+  transform: rotate(45deg);
+  margin-bottom: 2px; /* Slight adjustment to center the check */
+}

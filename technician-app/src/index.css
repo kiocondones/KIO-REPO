@@ -1,0 +1,221 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* =========================================
+   BASE / GLOBAL
+========================================= */
+@layer base {
+  *, *::before, *::after {
+    box-sizing: border-box;
+  }
+
+  * {
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  html {
+    -webkit-text-size-adjust: 100%;
+    text-size-adjust: 100%;
+  }
+
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+    background: #f9fafb;
+    color: #111827;
+    line-height: 1.5;
+    overflow-x: hidden;
+    scrollbar-width: none;
+  }
+
+  ::-webkit-scrollbar {
+    display: none;
+  }
+
+  input:focus-visible,
+  textarea:focus-visible,
+  select:focus-visible {
+    outline: none;
+    border-color: #dc2626;
+    box-shadow: 0 0 0 3px rgba(220, 38, 38, 0.12);
+  }
+}
+
+/* =========================================
+   ANIMATIONS
+========================================= */
+@layer utilities {
+  @keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+
+  @keyframes slideInLeft {
+    from { transform: translateX(-100%); }
+    to { transform: translateX(0); }
+  }
+
+  @keyframes slideUp {
+    from { transform: translateY(20px); opacity: 0; }
+    to { transform: translateY(0); opacity: 1; }
+  }
+
+  .animate-fadeIn { animation: fadeIn 0.2s ease-out both; }
+  .animate-slideInLeft { animation: slideInLeft 0.3s ease-out both; }
+  .animate-slideUp { animation: slideUp 0.3s ease-out both; }
+
+  .filter-tabs-scroll {
+    scrollbar-width: none;
+  }
+
+  .filter-tabs-scroll::-webkit-scrollbar {
+    display: none;
+  }
+
+  @media (min-width: 768px) {
+    .container-main {
+      box-shadow: 0 0 20px rgba(0,0,0,0.1);
+    }
+  }
+}
+
+/* =========================================
+   COMPONENT STYLES (FROM HTML)
+========================================= */
+@layer components {
+
+  /* Container */
+  .container {
+    max-width: 500px;
+    margin: 0 auto;
+    background: white;
+    min-height: 100vh;
+    position: relative;
+    padding-bottom: 70px;
+  }
+
+  /* Login Screen */
+  .login-screen {
+    @apply flex items-center justify-center min-h-screen p-5;
+    background: linear-gradient(135deg, #dc2626, #ef4444, #f97316);
+  }
+
+  .login-container {
+    width: 100%;
+    max-width: 400px;
+  }
+
+  .login-logo {
+    @apply flex items-center justify-center mx-auto mb-5 rounded-full bg-white shadow-xl;
+    width: 80px;
+    height: 80px;
+  }
+
+  .login-title {
+    @apply text-center text-white mb-2;
+  }
+
+  .login-title h1 {
+    @apply text-2xl font-bold mb-2;
+  }
+
+  .login-box {
+    @apply bg-white rounded-2xl p-8 mt-8 shadow-2xl;
+  }
+
+  /* Buttons */
+  .btn {
+    @apply w-full px-6 py-3 rounded-lg font-medium transition;
+  }
+
+  .btn-primary {
+    @apply bg-red-600 text-white hover:bg-red-700;
+  }
+
+  .btn-primary:disabled {
+    @apply bg-gray-300 cursor-not-allowed;
+  }
+
+  .btn-secondary {
+    @apply bg-transparent text-red-600 mt-3;
+  }
+
+  /* OTP */
+  .otp-inputs {
+    @apply flex gap-2 mb-6;
+  }
+
+  .otp-input {
+    @apply flex-1 h-14 text-center text-2xl font-bold border-2 border-gray-300 rounded-lg;
+  }
+
+  /* Header */
+  .top-header {
+    @apply sticky top-0 z-50 bg-white border-b border-gray-200 flex items-center justify-between px-4 py-3;
+  }
+
+  .icon-btn {
+    @apply w-10 h-10 flex items-center justify-center rounded-lg transition hover:bg-gray-100;
+  }
+
+  /* Bottom Navigation */
+  .bottom-nav {
+    @apply fixed bottom-0 left-0 right-0 bg-white border-t border-gray-200 flex justify-around py-2 z-50;
+  }
+
+  .nav-item {
+    @apply flex flex-col items-center gap-1 text-gray-500 transition;
+  }
+
+  .nav-item.active {
+    @apply text-red-600;
+  }
+
+  /* Cards */
+  .card {
+    @apply bg-white m-4 p-5 rounded-xl shadow-md;
+  }
+
+  .stat-card {
+    @apply p-5 rounded-xl shadow-md;
+  }
+
+  .stat-card.red { background: #dc2626; color: white; }
+  .stat-card.orange { background: #f97316; color: white; }
+  .stat-card.green { background: #16a34a; color: white; }
+  .stat-card.yellow { background: #eab308; color: white; }
+
+  /* Tickets */
+  .ticket-card {
+    @apply bg-white p-4 rounded-xl shadow-md mb-3 transition active:scale-95;
+  }
+
+  .badge {
+    @apply px-3 py-1 rounded-full text-xs font-bold;
+  }
+
+  .badge-assigned { background: #fee2e2; color: #991b1b; }
+  .badge-progress { background: #ffedd5; color: #9a3412; }
+  .badge-pending { background: #ede9fe; color: #6b21a8; }
+  .badge-completed { background: #dcfce7; color: #166534; }
+
+  .badge-critical { background: #dc2626; color: white; }
+  .badge-high { background: #f97316; color: white; }
+  .badge-medium { background: #eab308; color: white; }
+  .badge-low { background: #16a34a; color: white; }
+
+  /* Modal */
+  .modal-overlay {
+    @apply fixed inset-0 bg-black/50 flex items-center justify-center p-5 z-[300];
+  }
+
+  .modal {
+    @apply bg-white rounded-2xl w-full max-w-md max-h-[90vh] overflow-y-auto animate-slideUp;
+  }
+
+  /* Signature */
+  .signature-canvas {
+    @apply w-full h-52 border-2 border-dashed border-gray-300 rounded-lg cursor-crosshair;
+    touch-action: none;
+  }
+}

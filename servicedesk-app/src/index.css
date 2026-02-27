@@ -1,0 +1,196 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: #f3f4f6;
+}
+
+.with-sidebar {
+  margin-left: 250px;
+  transition: margin-left 0.3s ease;
+}
+
+.sidebar-collapsed-margin {
+  margin-left: 60px;
+  transition: margin-left 0.3s ease;
+}
+
+.scheduler-view, .backup-approver-view, .resource-management-view {
+  display: none;
+}
+
+.scheduler-view.active, .backup-approver-view.active, .resource-management-view.active {
+  display: block;
+}
+
+.technicians-modal, .backup-tech-modal, .tech-availability-modal {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0,0,0,0.5);
+  z-index: 2000;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+}
+
+.technicians-modal.active, .backup-tech-modal.active, .tech-availability-modal.active {
+  display: flex;
+}
+
+.modal-overlay {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0,0,0,0.5);
+  z-index: 1000;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+}
+
+.modal-overlay.active {
+  display: flex;
+}
+
+.date-popup {
+  display: none;
+  position: fixed;
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+  z-index: 1100;
+  padding: 12px;
+  min-width: 200px;
+}
+
+.date-popup.active {
+  display: block;
+}
+
+.repeat-options {
+  display: none;
+  margin-top: 12px;
+  padding-top: 12px;
+  border-top: 1px solid #e5e7eb;
+}
+
+.repeat-options.active {
+  display: block;
+}
+
+.sidebar::-webkit-scrollbar {
+  width: 6px;
+}
+
+.sidebar::-webkit-scrollbar-track {
+  background: #111827;
+}
+
+.sidebar::-webkit-scrollbar-thumb {
+  background: #4b5563;
+  border-radius: 3px;
+}
+
+.calendar-table td.today .date-number {
+  background: #3b82f6;
+  color: white;
+  border-radius: 50%;
+  width: 28px;
+  height: 28px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.calendar-table td.weekend {
+  background: #dbeafe;
+}
+
+.calendar-table td.holiday {
+  background: #bfdbfe;
+}
+
+.availability-table td.weekend {
+  background: #dbeafe;
+}
+
+.availability-table td.holiday {
+  background: #bfdbfe;
+}
+
+.availability-table td.weekday {
+  background: #f3f4f6;
+}
+
+.ticket-type-card.selected,
+.announcement-type-card.selected,
+.reminder-type-card.selected {
+  border-color: #3b82f6;
+  background: #eff6ff;
+}
+
+/* Login page styles */
+.login-container {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #1e3a8a 0%, #1e40af 50%, #3b82f6 100%);
+}
+
+/* Toast notification */
+.toast {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  padding: 16px 24px;
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+  z-index: 9999;
+  animation: slideInRight 0.3s ease-out;
+}
+
+.toast.success {
+  border-left: 4px solid #22c55e;
+}
+
+.toast.error {
+  border-left: 4px solid #ef4444;
+}
+
+/* External frame styles */
+.external-active .with-sidebar {
+  margin-left: 250px;
+}
+
+/* Custom scrollbar for main content */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #c1c1c1;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #a1a1a1;
+}
